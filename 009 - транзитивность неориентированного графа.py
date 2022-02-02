@@ -7,22 +7,22 @@ class Graph:
 		self.matrix_adj_arr2n = [[0] * v for _ in range(v)]
 		# словарь смежности
 		self.dict_adj = dict()
-		# print('###########')
-		# self.__print_edge()
-		# print('###########')
+		print('###########')
+		self.__print_edge()
+		print('###########')
 		self.__convert()
-		# self.__print()
-		# print('###########')
+		self.__print()
+		print('###########')
 		self.__dict_adj_fill()
-		# print(self.dict_adj)
-		# print('###########')
-		# print(self.__is_trans_3е(e))
-		# print('###########')
-		# self.__convert_matrix_adj(v)
-		# self.__print()
-		# print('###########')
-		print(self.__is_trans(self.dict_adj))
-		# print('###########')
+		print(self.dict_adj)
+		print('###########')
+		print(self.__is_trans_3е(e))
+		print('###########')
+		self.__convert_matrix_adj(v)
+		self.__print()
+		print('###########')
+		# print(self.__is_trans(self.dict_adj))
+		print('###########')
 		
 	# вывод списка ребер
 	def __print_edge(self):
@@ -81,6 +81,8 @@ class Graph:
 	
 	# проверка на транзитивность неорентированного графа
 	# если вершина имеет два ребра то неорентированный граф транзентивен, иначе нет
+	'''
+	# не работает
 	def __is_trans(self, dictor):
 		for i in dictor.values():
 			if not 1 < len(i) <3:
@@ -89,6 +91,7 @@ class Graph:
 				continue
 		else:
 			return 'YES'
+	'''
 		
 if __name__ == '__main__':
 	Graph(*list(map(int, input().split())))
