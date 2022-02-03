@@ -7,22 +7,26 @@ class Graph:
 		self.matrix_adj_arr2n = [[0] * v for _ in range(v)]
 		# словарь смежности
 		self.dict_adj = dict()
-		print('###########')
-		self.__print_edge()
-		print('###########')
+		# print('###########')
+		# self.__print_edge()
+		# print('###########')
 		self.__convert()
-		self.__print()
-		print('###########')
+		# self.__print()
+		# print('###########')
 		self.__dict_adj_fill()
-		print(self.dict_adj)
-		print('###########')
-		print(self.__is_trans_3е(e))
-		print('###########')
+		# print(self.dict_adj)
+		# print('###########')
+		# print(self.__is_trans_3е(e))
+		# print('###########')
 		self.__convert_matrix_adj(v)
-		self.__print()
-		print('###########')
-		# print(self.__is_trans(self.dict_adj))
-		print('###########')
+		# self.__print()
+		# print('###########')
+		fnd_key = list(self.dict_adj.keys())[0]
+		key = int(fnd_key)
+		step = int()
+		cnt_vert = len(self.dict_adj)
+		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_vert))
+		# print('###########')
 		
 	# вывод списка ребер
 	def __print_edge(self):
@@ -80,18 +84,25 @@ class Graph:
 					self.matrix_adj_arr2n[i][j] = j + 1
 	
 	# проверка на транзитивность неорентированного графа
-	# если вершина имеет два ребра то неорентированный граф транзентивен, иначе нет
-	'''
-	# не работает
-	def __is_trans(self, dictor):
-		for i in dictor.values():
-			if not 1 < len(i) <3:
+	# сделать обход в одну сторону 
+	# (включить условие: вход в ключи и из всех значений выбрать первый раз юольшее потом остальные меньшее)
+	def __is_trans(self, fnd_key, key, dictor, step, cnt_vert, check=True):
+		if 1 >= len(dictor):
+			return 'NO'
+		else:
+			if check:
+				key = min(dictor[key])
+			else:
+				if key not in dictor: 
+					return 'NO'
+				key = max(dictor[key])
+			if step == cnt_vert and fnd_key in dictor[key]:
+				return 'YES'
+			elif step > cnt_vert:
 				return 'NO'
 			else:
-				continue
-		else:
-			return 'YES'
-	'''
+				step += 1
+				return self.__is_trans(fnd_key, key, dictor, step, cnt_vert, check=False)
 		
 if __name__ == '__main__':
 	Graph(*list(map(int, input().split())))
