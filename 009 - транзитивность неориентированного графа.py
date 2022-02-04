@@ -27,7 +27,7 @@ class Graph:
 		cnt_vert = len(self.dict_adj)
 		# print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_vert))
 		# print('###########')
-		print(self.__is_trans(e))
+		print(self.__is_trans(v))
 		# print('###########')
 		
 	# вывод списка ребер
@@ -104,11 +104,11 @@ class Graph:
 				return 'NO'
 			else:
 				step += 1
-				return self.__is_trans(fnd_key, key, dictor, step, cnt_vert, check=False)
+				return self.__search_rec(fnd_key, key, dictor, step, cnt_vert, check=False)
 	
 	# проверка на транзитивность неорентированного графа
 	def __is_trans(self, v):
-		if 4 > v:
+		if 90 >= v:
 			return self.__is_trans_3е()
 		else:
 			return 'NO'
