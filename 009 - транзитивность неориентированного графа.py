@@ -85,6 +85,14 @@ class Graph:
 				if self.matrix_adj_arr2n[i][j]:
 					self.matrix_adj_arr2n[i][j] = j + 1
 
+	# если у вершины больше 2 ребер то грав не транзентивен
+	def __more_2_edge(self, dictor):
+		for v in dictor.values():
+			if 2 < len(v):
+				return True
+		else:
+			return False
+
 	# определение количества ребер в графе (в словаре смежности)
 	def __count_edge(self, dictor):
 		res = set()
@@ -116,7 +124,11 @@ class Graph:
 	
 	# проверка на транзитивность неорентированного графа
 	def __is_trans(self, fnd_key, key, dictor, step, cnt_edge,):
-		return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
+		if self.__more_2_edge(dictor):
+			return 'NO'
+		else:
+			# return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
+			return self.__is_trans_3е()
 		'''
 		if 3 >= cnt_edge:
 			return self.__is_trans_3е()
