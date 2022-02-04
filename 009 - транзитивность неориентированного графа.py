@@ -12,10 +12,10 @@ class Graph:
 		# print('###########')
 		self.__convert()
 		# self.__print()
-		# print('###########')
+		print('###########')
 		self.__dict_adj_fill()
-		# print(self.dict_adj)
-		# print('###########')
+		print(self.dict_adj)
+		print('###########')
 		# print(self.__is_trans_3е())
 		# print('###########')
 		self.__convert_matrix_adj(v)
@@ -24,10 +24,10 @@ class Graph:
 		fnd_key = list(self.dict_adj.keys())[0]
 		key = int(fnd_key)
 		step = int()
-		cnt_vert = e
-		# print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_vert))
+		cnt_edge = e
+		# print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_edge))
 		# print('###########')
-		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_vert))
+		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_edge))
 		# print('###########')
 		
 	# вывод списка ребер
@@ -88,7 +88,7 @@ class Graph:
 	# рекурсивный поиск заданной вершины в графе
 	# сделать обход в одну сторону 
 	# (включить условие: вход в ключи и из всех значений выбрать первый раз юольшее потом остальные меньшее)
-	def __search_rec(self, fnd_key, key, dictor, step, cnt_vert, check=True):
+	def __search_rec(self, fnd_key, key, dictor, step, cnt_edge, check=True):
 		if 1 >= len(dictor):
 			return 'NO'
 		else:
@@ -98,22 +98,22 @@ class Graph:
 				if key not in dictor: 
 					return 'NO'
 				key = max(dictor[key])
-			if step == cnt_vert and fnd_key in dictor[key]:
+			if step == cnt_edge and fnd_key in dictor[key]:
 				return 'YES'
-			elif step > cnt_vert:
+			elif step > cnt_edge:
 				return 'NO'
 			else:
 				step += 1
-				return self.__search_rec(fnd_key, key, dictor, step, cnt_vert, check=False)
+				return self.__search_rec(fnd_key, key, dictor, step, cnt_edge, check=False)
 	
 	# проверка на транзитивность неорентированного графа
-	def __is_trans(self, fnd_key, key, dictor, step, cnt_vert,):
-		return self.__search_rec(fnd_key, key, dictor, step, cnt_vert)
+	def __is_trans(self, fnd_key, key, dictor, step, cnt_edge,):
+		return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
 		'''
-		if 3 >= cnt_vert:
+		if 3 >= cnt_edge:
 			return self.__is_trans_3е()
 		else:
-			return self.__search_rec(fnd_key, key, dictor, step, cnt_vert)
+			return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
 		'''
 		
 if __name__ == '__main__':
