@@ -1,6 +1,7 @@
 # сделать обход в одну сторону 
 # (включить условие: вход в ключи и из всех значений выбрать первый раз юольшее потом остальные меньшее)
 
+# поиск вершины в графе
 def search_rec(fnd_key, key, dictor, step, cnt_edge, check=True):
 	print('--------------------')###
 	# step += 1
@@ -25,6 +26,14 @@ def search_rec(fnd_key, key, dictor, step, cnt_edge, check=True):
 		else:
 			step += 1
 			return search_rec(fnd_key, key, dictor, step, cnt_edge, check=False)
+
+# определение количества ребер в графе (в словаре смежности)
+def count_edge(dictor):
+	res = set()
+	for v in dictor.values():
+		for i in v:
+			res.add(i)
+	return len(res)
 	
 # словарь смежности неорентированного графа тест1 + YES
 dictor = {1: [2, 4],
@@ -44,9 +53,13 @@ dictor = {1: [2],
 			3: [4],
 			5: [6],
 			7: [8]}
-# словарь смежности неорентированного графа тест5 
+# словарь смежности неорентированного графа тест5 + NO
 dictor = {1: [2],
 			2: [3]}
+# словарь смежности неорентированного графа тест6 -
+dictor = {1: [2],
+			2: [1, 3],
+			3: [2]}
 
 fnd_key = list(dictor.keys())[0]
 print('fnd_key =', fnd_key)
@@ -55,7 +68,7 @@ print('key =', key)
 print('dictor =', dictor)
 step = int()
 print('step =', step)
-cnt_edge = len(dictor)
-print('cnt_vert =', cnt_edge)
+cnt_edge = count_edge(dictor)
+print('cnt_edge =', cnt_edge)
 print('---------------------------')
 print(search_rec(fnd_key, key, dictor, step, cnt_edge))

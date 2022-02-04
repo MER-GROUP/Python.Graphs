@@ -12,10 +12,10 @@ class Graph:
 		# print('###########')
 		self.__convert()
 		# self.__print()
-		print('###########')
+		# print('###########')
 		self.__dict_adj_fill()
-		print(self.dict_adj)
-		print('###########')
+		# print(self.dict_adj)
+		# print('###########')
 		# print(self.__is_trans_3е())
 		# print('###########')
 		self.__convert_matrix_adj(v)
@@ -24,7 +24,7 @@ class Graph:
 		fnd_key = list(self.dict_adj.keys())[0]
 		key = int(fnd_key)
 		step = int()
-		cnt_edge = e
+		cnt_edge = self.__count_edge(self.dict_adj)
 		# print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_edge))
 		# print('###########')
 		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_edge))
@@ -84,6 +84,14 @@ class Graph:
 			for j in range(v):
 				if self.matrix_adj_arr2n[i][j]:
 					self.matrix_adj_arr2n[i][j] = j + 1
+
+	# определение количества ребер в графе (в словаре смежности)
+	def __count_edge(self, dictor):
+		res = set()
+		for v in dictor.values():
+			for i in v:
+				res.add(i)
+		return len(res)
 
 	# рекурсивный поиск заданной вершины в графе
 	# сделать обход в одну сторону 
