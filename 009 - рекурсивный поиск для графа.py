@@ -1,14 +1,14 @@
 # сделать обход в одну сторону 
 # (включить условие: вход в ключи и из всех значений выбрать первый раз юольшее потом остальные меньшее)
 
-def search_rec(fnd_key, key, dictor, step, cnt_vert, check=True):
+def search_rec(fnd_key, key, dictor, step, cnt_edge, check=True):
 	print('--------------------')###
 	# step += 1
 	print('fnd_key =', fnd_key)
 	print('key =', key)
 	print('dictor =', dictor)
 	print('step =', step)
-	print('cnt_vert =', cnt_vert)
+	print('cnt_edge =', cnt_edge)
 	if 1 >= len(dictor):
 		return 'NO'
 	else:
@@ -18,13 +18,13 @@ def search_rec(fnd_key, key, dictor, step, cnt_vert, check=True):
 			if key not in dictor: 
 				return 'NO'
 			key = max(dictor[key])
-		if step == cnt_vert and fnd_key in dictor[key]:
+		if step == cnt_edge and fnd_key in dictor[key]:
 			return 'YES'
-		elif step > cnt_vert:
+		elif step > cnt_edge:
 			return 'NO'
 		else:
 			step += 1
-			return search_rec(fnd_key, key, dictor, step, cnt_vert, check=False)
+			return search_rec(fnd_key, key, dictor, step, cnt_edge, check=False)
 	
 # словарь смежности неорентированного графа тест1 + YES
 dictor = {1: [2, 4],
@@ -44,6 +44,9 @@ dictor = {1: [2],
 			3: [4],
 			5: [6],
 			7: [8]}
+# словарь смежности неорентированного графа тест5 
+dictor = {1: [2],
+			2: [3]}
 
 fnd_key = list(dictor.keys())[0]
 print('fnd_key =', fnd_key)
@@ -52,7 +55,7 @@ print('key =', key)
 print('dictor =', dictor)
 step = int()
 print('step =', step)
-cnt_vert = len(dictor)
-print('cnt_vert =', cnt_vert)
+cnt_edge = len(dictor)
+print('cnt_vert =', cnt_edge)
 print('---------------------------')
-print(search_rec(fnd_key, key, dictor, step, cnt_vert))
+print(search_rec(fnd_key, key, dictor, step, cnt_edge))
