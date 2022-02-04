@@ -24,10 +24,10 @@ class Graph:
 		fnd_key = list(self.dict_adj.keys())[0]
 		key = int(fnd_key)
 		step = int()
-		cnt_vert = len(self.dict_adj)
+		cnt_vert = e
 		# print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_vert))
 		# print('###########')
-		print(self.__is_trans(v))
+		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_vert))
 		# print('###########')
 		
 	# вывод списка ребер
@@ -107,11 +107,11 @@ class Graph:
 				return self.__search_rec(fnd_key, key, dictor, step, cnt_vert, check=False)
 	
 	# проверка на транзитивность неорентированного графа
-	def __is_trans(self, v):
-		if 90 >= v:
+	def __is_trans(self, fnd_key, key, dictor, step, cnt_vert,):
+		if 3 >= cnt_vert:
 			return self.__is_trans_3е()
 		else:
-			return 'NO'
+			return self.__search_rec(fnd_key, key, dictor, step, cnt_vert)
 		
 if __name__ == '__main__':
 	Graph(*list(map(int, input().split())))
