@@ -108,10 +108,13 @@ class Graph:
 	
 	# проверка на транзитивность неорентированного графа
 	def __is_trans(self, fnd_key, key, dictor, step, cnt_vert,):
+		return self.__search_rec(fnd_key, key, dictor, step, cnt_vert)
+		'''
 		if 3 >= cnt_vert:
 			return self.__is_trans_3е()
 		else:
 			return self.__search_rec(fnd_key, key, dictor, step, cnt_vert)
+		'''
 		
 if __name__ == '__main__':
 	Graph(*list(map(int, input().split())))
