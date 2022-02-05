@@ -1,3 +1,5 @@
+# задача взята с сайта
+# https://informatics.msk.ru/mod/statements/view.php?id=6543&chapterid=479#1
 class Graph:
 	# конструктор
 	def __init__(self, v, e):
@@ -124,17 +126,7 @@ class Graph:
 	
 	# проверка на транзитивность неорентированного графа
 	def __is_trans(self, fnd_key, key, dictor, step, cnt_edge,):
-		if self.__more_2_edge(dictor):
-			return 'NO'
-		else:
-			# return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
-			return self.__is_trans_3е()
-		'''
-		if 3 >= cnt_edge:
-			return self.__is_trans_3е()
-		else:
-			return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
-		'''
+		return self.__is_trans_3е()
 		
 if __name__ == '__main__':
 	Graph(*list(map(int, input().split())))
