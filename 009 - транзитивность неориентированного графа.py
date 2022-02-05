@@ -1,3 +1,5 @@
+# задача взята с сайта
+# https://informatics.msk.ru/mod/statements/view.php?id=6543&chapterid=479#1
 class Graph:
 	# конструктор
 	def __init__(self, v, e):
@@ -85,6 +87,14 @@ class Graph:
 				if self.matrix_adj_arr2n[i][j]:
 					self.matrix_adj_arr2n[i][j] = j + 1
 
+	# если у вершины больше 2 ребер то грав не транзентивен
+	def __more_2_edge(self, dictor):
+		for v in dictor.values():
+			if 2 < len(v):
+				return True
+		else:
+			return False
+
 	# определение количества ребер в графе (в словаре смежности)
 	def __count_edge(self, dictor):
 		res = set()
@@ -116,13 +126,7 @@ class Graph:
 	
 	# проверка на транзитивность неорентированного графа
 	def __is_trans(self, fnd_key, key, dictor, step, cnt_edge,):
-		return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
-		'''
-		if 3 >= cnt_edge:
-			return self.__is_trans_3е()
-		else:
-			return self.__search_rec(fnd_key, key, dictor, step, cnt_edge)
-		'''
+		return self.__is_trans_3е()
 		
 if __name__ == '__main__':
 	Graph(*list(map(int, input().split())))
