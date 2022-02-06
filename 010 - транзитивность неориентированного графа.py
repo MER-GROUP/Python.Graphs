@@ -1,5 +1,6 @@
 # задача взята с сайта
 # https://informatics.msk.ru/mod/statements/view.php?id=6543&chapterid=479#1
+# изучить алгоритм Уолшара !
 class Graph:
 	# конструктор
 	def __init__(self, v, e):
@@ -9,26 +10,26 @@ class Graph:
 		self.matrix_adj_arr2n = [[0] * v for _ in range(v)]
 		# словарь смежности
 		self.dict_adj = dict()
-		# print('###########')
-		# self.__print_edge()
-		# print('###########')
+		print('###########')
+		self.__print_edge()
+		print('###########')
 		self.__convert()
-		# self.__print()
-		# print('###########')
+		self.__print()
+		print('###########')
 		self.__dict_adj_fill()
-		# print(self.dict_adj)
-		# print('###########')
-		# print(self.__is_trans_3е())
-		# print('###########')
+		print(self.dict_adj)
+		print('###########')
+		print(self.__is_trans_3е())
+		print('###########')
 		self.__convert_matrix_adj(v)
-		# self.__print()
-		# print('###########')
+		self.__print()
+		print('###########')
 		fnd_key = list(self.dict_adj.keys())[0]
 		key = int(fnd_key)
 		step = int()
-		cnt_edge = self.__count_edge(self.dict_adj)
-		# print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_edge))
-		# print('###########')
+		cnt_edge = e
+		print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_edge))
+		print('###########')
 		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_edge))
 		# print('###########')
 		
@@ -86,22 +87,6 @@ class Graph:
 			for j in range(v):
 				if self.matrix_adj_arr2n[i][j]:
 					self.matrix_adj_arr2n[i][j] = j + 1
-
-	# если у вершины больше 2 ребер то грав не транзентивен
-	def __more_2_edge(self, dictor):
-		for v in dictor.values():
-			if 2 < len(v):
-				return True
-		else:
-			return False
-
-	# определение количества ребер в графе (в словаре смежности)
-	def __count_edge(self, dictor):
-		res = set()
-		for v in dictor.values():
-			for i in v:
-				res.add(i)
-		return len(res)
 
 	# рекурсивный поиск заданной вершины в графе
 	# сделать обход в одну сторону 
