@@ -27,7 +27,7 @@ class Graph:
 		fnd_key = list(self.dict_adj.keys())[0]
 		key = int(fnd_key)
 		step = int()
-		cnt_edge = self.__count_edge(self.dict_adj)
+		cnt_edge = e
 		print(self.__search_rec(fnd_key, key, self.dict_adj, step, cnt_edge))
 		print('###########')
 		print(self.__is_trans(fnd_key, key, self.dict_adj, step, cnt_edge))
