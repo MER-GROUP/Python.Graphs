@@ -1,6 +1,4 @@
-# сделать обход в одну сторону 
-# (включить условие: вход в ключи и из всех значений выбрать первый раз юольшее потом остальные меньшее)
-
+# пример рекурсивного поиска в любом графе (ориентированном и не ориентированном)
 # поиск вершины в графе
 def search_rec(fnd_key, key, dictor, step, cnt_edge, check=True):
 	print('--------------------')###
@@ -28,20 +26,13 @@ def search_rec(fnd_key, key, dictor, step, cnt_edge, check=True):
 			return search_rec(fnd_key, key, dictor, step, cnt_edge, check=False)
 
 # определение количества ребер в графе (в словаре смежности)
+# для простого графа
 def count_edge(dictor):
 	res = set()
 	for v in dictor.values():
 		for i in v:
 			res.add(i)
 	return len(res)
-
-# если у вершины больше 2 ребер то грав не транзентивен
-def more_2_edge(dictor):
-	for v in dictor.values():
-		if 2 < len(v):
-			return 'NO'
-	else:
-		return 'YES'
 	
 # словарь смежности неорентированного графа тест1 + YES
 dictor = {1: [2, 4],
